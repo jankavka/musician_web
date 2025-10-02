@@ -1,0 +1,5 @@
+/db.sqlite3
+vlastik_site/__pycache__/
+web_site/__pycache__/
+.venv/
+web_site/migrations/
