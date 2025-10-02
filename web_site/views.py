@@ -4,4 +4,5 @@ from django.http import HttpResponse
 # Create your views here.
 
 def index(request):
-    return HttpResponse("HellO form Django!")
+    return render(request, "web_site/index.html")
+
