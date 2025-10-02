@@ -1,5 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
 db.sqlite3
-vlastik_site/__pycache__/
-web_site/__pycache__/
+media
+staticfiles
+.env
+
+# Virtual environment
+venv/
+ENV/
+env/
 .venv/
-web_site/migrations/
+
+# IDE / Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# Pytest / Coverage
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+# Mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# PyCharm
+*.iml
+*.ipr
+*.iws
+out/
+
+# Mac / Linux / Windows junk
+.DS_Store
+Thumbs.db
