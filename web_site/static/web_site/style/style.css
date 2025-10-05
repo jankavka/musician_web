@@ -1,3 +1,69 @@
-.test{
-    font-size: 300px;
+@font-face {
+    font-family: "Cabin";
+    src: url("/static/web_site/fonts/Cabin/Cabin-VariableFont_wdth\,wght.ttf");
+}
+
+:root {
+    --bg-darker: rgb(237, 209, 130);
+    --bg-lighter: rgb(237, 224, 189);
+}
+
+html>* {
+    font-family: 'Cabin';
+    font-size: 1.2rem;
+}
+
+body {
+    background-color: var(--bg-darker);
+    margin: 0 auto;
+}
+
+article {
+    width: 960px;
+    margin: 10px auto;
+}
+
+.title-image {
+    opacity: 0.5;
+    border-radius: 50%;
+    margin: 10px auto;
+}
+
+.my-text {
+    text-decoration: none;
+    color: black;
+    size: 100px;
+}
+
+.test {
+    size: 500px;
+}
+
+.index-picture-div {
+    text-align: center;
+}
+
+.my-bg-nav {
+    background-color: var(--bg-lighter);
+}
+
+.my-dropdown-bg {
+    background-color: var(--bg-lighter);
+}
+
+footer {
+    max-height: 100px;
+    position: absolute !important;
+    bottom: 0;
+    width: 100%;
+}
+
+@media (width < 767px) {
+    article {
+        max-width: fit-content;
+    }
+
+    .title-image {
+        max-width: 100px;
+    }
 }
