@@ -1,10 +1,19 @@
 {% extends "web_site/base.html" %}
+
 <!DOCTYPE html>
 
 <html>
     {% block article %}
     <article>
         <h1>Fotky</h1>
+        <div class="picture-box d-grid gap-3">
+        {% for photo in photos_list %}
+
+            <img class="my-picture" src={{photo.photo.url}} alt="{{photo.title}}">
+            
+
+        {% endfor %}
+        </div>
     </article>
     {% endblock %}
 </html>
