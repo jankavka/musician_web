@@ -8,6 +8,8 @@
     --bg-lighter: rgb(237, 224, 189);
 }
 
+/* navigation and general */
+
 html>* {
     font-family: 'Cabin';
     font-size: 1.2rem;
@@ -29,17 +31,13 @@ article {
     margin: 10px auto;
 }
 
-.my-text {
+.nav-title-text {
     text-decoration: none;
     color: black;
     size: 100px;
 }
 
-.test {
-    size: 500px;
-}
-
-.index-picture-div {
+.main-picture {
     text-align: center;
 }
 
@@ -58,6 +56,12 @@ footer {
     width: 100%;
 }
 
+.dev-link{
+    color: black;
+}
+
+
+
 @media (width < 767px) {
     article {
         max-width: fit-content;
@@ -66,4 +70,19 @@ footer {
     .title-image {
         max-width: 100px;
     }
+}
+
+
+/* photos section */
+
+.picture-box {
+    /* grid-template-columns: repeat(2, 1fr); */
+    grid-template-columns: 1fr 1fr 1fr;
+    align-content: center;
+
+}
+
+.my-picture {
+    max-width: 200px;
+    max-height: 100px;
 }

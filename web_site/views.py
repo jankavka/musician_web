@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
-from web_site.models import Event, Project
+from web_site.models import Event, Project, Photos
 
 # Create your views here.
 
@@ -22,7 +22,12 @@ def projects(request):
     return render(request, "web_site/projects.html")
 
 def photos(request):
-    return render(request, "web_site/photos.html")
+    try:
+        photos_list = Photos.objects.all()
+    except:
+        raise Http404("Phohots are empty")
+    context = {"photos_list":photos_list}
+    return render(request, "web_site/photos.html", context)
 
 
 def videos(request):

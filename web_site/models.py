@@ -2,6 +2,10 @@ from django.db import models
 from datetime import datetime, tzinfo, timezone, timedelta
 import pytz
 import locale
+from django.dispatch import receiver
+
+import os
+import uuid
 
 # Create your models here.
 
@@ -39,3 +43,17 @@ class Project(models.Model):
 
     def __str__(self):
         return self.band_name + ", " + self.description
+    
+
+class Photos(models.Model):
+    title = models.CharField(max_length=200, verbose_name="titulek")
+    photo = models.ImageField(verbose_name="foto")
+
+
+    class Meta:
+        verbose_name = "Fotka"
+        verbose_name_plural = "Fotky"
+   
+
+    def __str__(self):
+        return self.title + ": " + self.photo.path
