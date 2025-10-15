@@ -57,3 +57,16 @@ class Photos(models.Model):
 
     def __str__(self):
         return self.title + ": " + self.photo.path
+
+
+class Contact(models.Model):
+    email = models.CharField(max_length=200)
+    telephone = models.CharField(max_length=200)
+
+    class Meta:
+
+        verbose_name = "Kontakt"
+        verbose_name_plural = "Kontakty"
+
+    def __str__(self):
+        return "email: " + self.email + "telephone: " + self.telephone
