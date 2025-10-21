@@ -13,6 +13,7 @@
             <th>Název akce</th>
             <th>Kapela</th>
             <th>Čas</th>
+            <th>Odkaz</th>
           </tr>
         </thead>
         {% for event in events_list %}
@@ -20,6 +21,7 @@
           <td>{{ event.title}}</td>
           <td>{{ event.band }}</td>
           <td>{{ event.start_of_event }}</td>
+          <td><a href="{{ event.link }}" target="_blank">Odkaz na událost</a></td>
         </tr>
         {% endfor %}
       </table>

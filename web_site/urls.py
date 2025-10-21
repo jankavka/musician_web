@@ -13,7 +13,8 @@ urlpatterns = [
     path("kontakt", views.contact, name="contant"),
     path("projekty", views.projects, name="projects"),
     path("fotky", views.photos, name="photos"),
-    path("videa", views.videos, name="videos")
+    path("videa", views.videos, name="videos"),
+    path("o_me", views.about_me, name="about_me")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # if settings.DEBUG:
