@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
-from web_site.models import Event, Project, Photos
-
+from web_site.models import Event, Project, Photos, Contact
+from web_site.admin import ContactAdmin, load_json_file
+from vlastik_site import settings
 # Create your views here.
 
 def index(request):
@@ -16,7 +17,14 @@ def concerts(request):
     return render(request, "web_site/concerts.html", context)
 
 def contact(request):
-    return render(request, "web_site/contact.html")
+    try:
+        contact_list = load_json_file(settings.CONTACT_JSON_FILE)
+        context = {"contact_list":  contact_list}
+    except:
+        # raise Http404("Contacts are emtpy")
+        context = {}
+    
+    return render(request, "web_site/contact.html", context)
 
 def projects(request):
     return render(request, "web_site/projects.html")
@@ -32,3 +40,8 @@ def photos(request):
 
 def videos(request):
     return render(request, "web_site/videos.html")
+
+def about_me(request):
+    content = load_json_file(settings.ABOUT_ME_JSON_FILE)
+    return render(request, "web_site/about_me.html", content)
+

@@ -130,3 +130,7 @@ MEDIA_ROOT = BASE_DIR / "web_site/uploads/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CONTACT_JSON_FILE = BASE_DIR / "web_site/data/contact.json"
+
+ABOUT_ME_JSON_FILE = BASE_DIR / "web_site/data/aboutme.json"

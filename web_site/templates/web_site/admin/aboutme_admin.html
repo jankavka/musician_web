@@ -1,0 +1,20 @@
+{% extends "admin/base.html" %}
+{{ block.super }}
+
+{% block content %}
+
+<div class="text-white">
+
+    
+    <form method="POST" >
+        {% csrf_token %}
+       <div>
+        {{content.as_p}}
+       </div>
+        <button type="sumbit" class="default">Odeslat</button>
+    </form>
+
+    <a href="/admin"><button type="button">Domů</button></a>
+</div>
+
+{% endblock %}

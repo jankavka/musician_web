@@ -90,3 +90,24 @@ footer {
     max-width: 200px;
     max-height: 100px;
 }
+
+/* Contact section */
+
+.contact .contact-item{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    min-height: max-content;
+    margin: 2rem 0 2rem 0;
+}
+
+.contact .text-wrapper p{
+    margin: 0;
+    margin-left: 1rem;
+}
+
+.contact .my-icon{
+    width: 3rem;
+    height: auto;
+}
+
