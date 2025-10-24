@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
-from web_site.models import Event, Project, Photos, Contact
+from web_site.models import Event, Project, Photo, Contact, Video
 from web_site.admin import ContactAdmin, load_json_file
 from vlastik_site import settings
 # Create your views here.
@@ -31,7 +31,7 @@ def projects(request):
 
 def photos(request):
     try:
-        photos_list = Photos.objects.all()
+        photos_list = Photo.objects.all()
     except:
         raise Http404("Phohots are empty")
     context = {"photos_list":photos_list}
@@ -39,7 +39,11 @@ def photos(request):
 
 
 def videos(request):
-    return render(request, "web_site/videos.html")
+    try:
+        context = {"videos" : Video.objects.all()}
+    except:
+        raise Http404("Videa jsou prázdné")
+    return render(request, "web_site/videos.html", context)
 
 def about_me(request):
     content = load_json_file(settings.ABOUT_ME_JSON_FILE)

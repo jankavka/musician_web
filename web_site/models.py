@@ -1,13 +1,9 @@
 from django.db import models
 
-# from datetime import datetime, tzinfo, timezone, timedelta
 import pytz
 import locale
-import json
-from django.dispatch import receiver
-from vlastik_site import settings
-import os
-import uuid
+import re
+import random
 
 # Create your models here.
 
@@ -43,7 +39,7 @@ class Project(models.Model):
         return self.band_name + ", " + self.description
 
 
-class Photos(models.Model):
+class Photo(models.Model):
     title = models.CharField(max_length=200, verbose_name="titulek")
     photo = models.ImageField(verbose_name="foto")
 
@@ -55,8 +51,46 @@ class Photos(models.Model):
         return self.title + ": " + self.photo.path
 
 
-class Contact(models.Model):
+class Video(models.Model):
+    link = models.CharField(max_length=200, verbose_name="odkaz")
+    title = models.CharField(max_length=200, verbose_name="popisek")
+    normalized_title = models.CharField(max_length=200)
 
+    class Meta:
+        verbose_name = "Video"
+        verbose_name_plural = "Videa"
+
+    def extract_videoId(self):
+        if self.link.startswith("http"):
+            index = self.link.find("v=") + 2
+            video_id = self.link[index:]
+            self.link = video_id
+        if "&" in self.link:
+            end_of_video_id = self.link.find("&")
+            self.link = self.link[:end_of_video_id]
+
+    def normalize_title(self):
+        string_to_normalize = self.title
+        if( re.search("\s", string_to_normalize)):
+            string_to_normalize = re.sub("\s", "-", string_to_normalize)
+        if( re.search("[ěščřžýáíéťď]", string_to_normalize)):
+            string_to_normalize = re.sub("[ěščřžýáíéťď]", "-", string_to_normalize)
+        number = random.randint(0,1000)
+        string_to_normalize = string_to_normalize + str(number)
+        self.normalized_title = string_to_normalize.lower().strip()
+
+            
+
+    def save(self, *args, **kwargs):
+        self.extract_videoId()
+        self.normalize_title()
+        super(Video, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return "Jméno: " + self.title + ", norm title: " + self.normalized_title
+
+
+class Contact(models.Model):
 
     class Meta:
         managed: False
