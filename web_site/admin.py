@@ -7,12 +7,13 @@ import json
 
 # Register your models here.
 
-from .models import Event, Project, Photos, Contact, AboutMe
+from .models import Event, Project, Photo, Contact, AboutMe, Video
 
 
 admin.site.register(Event)
 admin.site.register(Project)
-admin.site.register(Photos)
+admin.site.register(Photo)
+
 
 
 class ContactForm(forms.Form):
@@ -142,3 +143,10 @@ class AboutMeAdmin(admin.ModelAdmin):
 
 
 admin.site.register(AboutMe, AboutMeAdmin)
+
+
+class VideoAdmin(admin.ModelAdmin):
+    exclude = ["normalized_title"]
+
+
+admin.site.register(Video, VideoAdmin)

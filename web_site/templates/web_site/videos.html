@@ -1,11 +1,60 @@
 {% extends "web_site/base.html" %}
 <!DOCTYPE html>
 <html>
-  {% block article %} 
-  
-  <article>
-    <h1>Videa</h1>
-  </article>
+{% block article %}
 
-  {% endblock %}
+<article>
+  <h1>Videa</h1>
+  {% for video in videos %}
+
+
+  <div>
+    <h2>{{ video.title }}</h2>
+    <p class="video collapse" aria-hidden="true">{{video.link}}</p>
+    <p class="name collapse">{{video.normalized_title}}</p>
+    <!-- <iframe  src="{{ video.link }}" type="text/html"></iframe> -->
+  </div>
+  <div enablejsapi id="{{video.normalized_title}}">
+  </div>
+
+  {% endfor %}
+</article>
+
+<script>
+
+  // takes elements with link to the video wich is transformed and saved just as an videos id 
+  let videoIds = document.getElementsByClassName("video")
+
+  // Takes elements with video titles, which is later used as an css selector
+  let videoName = document.getElementsByClassName("name")
+
+
+  for (let i = 0; i < videoIds.length; i++) {
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/player_api";
+
+    var currentScriptTag = document.getElementsByTagName('script')[i];
+    currentScriptTag.parentNode.insertBefore(tag, currentScriptTag);
+  }
+  function onYouTubePlayerAPIReady() {
+    // console.log("triggered youtube")
+    for (let j = 0; j < videoIds.length; j++) {
+      var player
+      player = new YT.Player(videoName[j].innerText, {
+        height: '360',
+        width: '640',
+        videoId: videoIds[j].innerText
+      });
+    }
+
+  }
+
+
+</script>
+
+
+{% endblock %}
+
+
+
 </html>
