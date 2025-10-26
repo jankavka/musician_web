@@ -146,7 +146,7 @@ admin.site.register(AboutMe, AboutMeAdmin)
 
 
 class VideoAdmin(admin.ModelAdmin):
-    exclude = ["normalized_title"]
+    exclude = ["normalized_title", "youtube_video_id"]
 
 
 admin.site.register(Video, VideoAdmin)

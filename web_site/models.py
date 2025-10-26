@@ -55,31 +55,31 @@ class Video(models.Model):
     link = models.CharField(max_length=200, verbose_name="odkaz")
     title = models.CharField(max_length=200, verbose_name="popisek")
     normalized_title = models.CharField(max_length=200)
+    youtube_video_id = models.CharField(max_length=200)
 
     class Meta:
         verbose_name = "Video"
         verbose_name_plural = "Videa"
 
+    # extracts videoID for later use in player_api script in template
     def extract_videoId(self):
-        if self.link.startswith("http"):
+        if self.youtube_video_id.strip() == "":
             index = self.link.find("v=") + 2
             video_id = self.link[index:]
-            self.link = video_id
-        if "&" in self.link:
-            end_of_video_id = self.link.find("&")
-            self.link = self.link[:end_of_video_id]
+            self.youtube_video_id = video_id
+            if "&" in self.youtube_video_id:
+                end_of_video_id = self.youtube_video_id.find("&")
+                self.youtube_video_id = self.youtube_video_id[:end_of_video_id]
 
+    # normalizes title for later use as a CSS selector in template
     def normalize_title(self):
-        string_to_normalize = self.title
-        if( re.search("\s", string_to_normalize)):
+        if self.normalized_title.strip() == "":
+            string_to_normalize = self.title.strip()
             string_to_normalize = re.sub("\s", "-", string_to_normalize)
-        if( re.search("[ěščřžýáíéťď]", string_to_normalize)):
             string_to_normalize = re.sub("[ěščřžýáíéťď]", "-", string_to_normalize)
-        number = random.randint(0,1000)
-        string_to_normalize = string_to_normalize + str(number)
-        self.normalized_title = string_to_normalize.lower().strip()
-
-            
+            number = random.randint(0, 1000)
+            string_to_normalize = string_to_normalize + str(number)
+            self.normalized_title = string_to_normalize.lower().strip()
 
     def save(self, *args, **kwargs):
         self.extract_videoId()
@@ -87,7 +87,7 @@ class Video(models.Model):
         super(Video, self).save(*args, **kwargs)
 
     def __str__(self):
-        return "Jméno: " + self.title + ", norm title: " + self.normalized_title
+        return "Titulek: " + self.title 
 
 
 class Contact(models.Model):

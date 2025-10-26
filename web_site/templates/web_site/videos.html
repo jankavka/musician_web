@@ -10,9 +10,8 @@
 
   <div>
     <h2>{{ video.title }}</h2>
-    <p class="video collapse" aria-hidden="true">{{video.link}}</p>
+    <p class="video collapse" aria-hidden="true">{{video.youtube_video_id}}</p>
     <p class="name collapse">{{video.normalized_title}}</p>
-    <!-- <iframe  src="{{ video.link }}" type="text/html"></iframe> -->
   </div>
   <div enablejsapi id="{{video.normalized_title}}">
   </div>

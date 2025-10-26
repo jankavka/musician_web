@@ -134,3 +134,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CONTACT_JSON_FILE = BASE_DIR / "web_site/data/contact.json"
 
 ABOUT_ME_JSON_FILE = BASE_DIR / "web_site/data/aboutme.json"
+
+ALLOWED_HOSTS = ['10.0.1.17', "0.0.0.0", "127.0.0.1"]
