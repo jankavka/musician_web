@@ -62,7 +62,7 @@ class Video(models.Model):
         verbose_name_plural = "Videa"
 
     # extracts videoID for later use in player_api script in template
-    def extract_videoId(self):
+    def extract_video_id(self):
         if self.youtube_video_id.strip() == "":
             index = self.link.find("v=") + 2
             video_id = self.link[index:]
@@ -82,7 +82,7 @@ class Video(models.Model):
             self.normalized_title = string_to_normalize.lower().strip()
 
     def save(self, *args, **kwargs):
-        self.extract_videoId()
+        self.extract_video_id()
         self.normalize_title()
         super(Video, self).save(*args, **kwargs)
 
