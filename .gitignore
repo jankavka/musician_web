@@ -50,3 +50,8 @@ out/
 # Mac / Linux / Windows junk
 .DS_Store
 Thumbs.db
+
+# uploads
+
+**/uploads/** 
+!/uploads/.gitkeep
