@@ -5,6 +5,7 @@ import locale
 import re
 import random
 
+
 # Create your models here.
 
 
@@ -30,13 +31,14 @@ class Event(models.Model):
 class Project(models.Model):
     band_name = models.CharField(max_length=200, verbose_name="název projektu")
     description = models.TextField(verbose_name="popis")
+    photo = models.ImageField(verbose_name="foto")
 
     class Meta:
         verbose_name = "Projekt"
         verbose_name_plural = "Projekty"
 
     def __str__(self):
-        return self.band_name + ", " + self.description
+        return self.band_name
 
 
 class Photo(models.Model):
@@ -104,3 +106,4 @@ class AboutMe(models.Model):
         managed: False
         verbose_name = "O mě"
         verbose_name_plural = "O mě"
+        

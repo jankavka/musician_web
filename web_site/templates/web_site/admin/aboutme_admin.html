@@ -3,18 +3,29 @@
 
 {% block content %}
 
-<div class="text-white">
+{% load static %}
 
-    
-    <form method="POST" >
+<script src="{% static '/web_site/script/tinymce/tinymce.min.js' %}"></script>
+
+<script>
+    tinymce.init({
+      selector: '#id_content',
+      license_key: 'gpl',
+      width: 900
+    });
+  </script>
+<div class="container">
+
+
+    <form method="POST" style="margin-bottom: 5px;">
         {% csrf_token %}
-       <div>
-        {{content.as_p}}
-       </div>
-        <button type="sumbit" class="default">Odeslat</button>
+        <div>
+             {{content.as_p}}
+        </div>
+        <input type="submit" class="default" value="Odeslat"/>
     </form>
 
-    <a href="/admin"><button type="button">Domů</button></a>
-</div>
+    <a href="/admin"><button class="button default" type="button" style="width: 60px;" >Domů</button></a>
 
+</div>
 {% endblock %}
