@@ -55,3 +55,7 @@ Thumbs.db
 
 **/uploads/** 
 !**/uploads/.gitkeep
+
+# hosted libraries
+**/tinymce/** 
+!**/tinymce/.gitkeep
