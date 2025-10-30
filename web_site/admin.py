@@ -100,6 +100,9 @@ admin.site.register(Contact, ContactAdmin)
 
 class AboutMeForm(forms.Form):
     content = forms.CharField(widget=forms.Textarea)
+    #content = forms.CharField(widget=TinyMCE())
+    #content = tinymce_models.HTMLField()
+
 
 
 class AboutMeAdmin(admin.ModelAdmin):

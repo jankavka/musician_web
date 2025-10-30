@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #'tinymce',
+    #'django.contrib.sites',
+    #'django.contrib.flatpages',
     #should stay the last
     'django_cleanup.apps.CleanupConfig',
 ]

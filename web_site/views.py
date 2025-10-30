@@ -27,7 +27,9 @@ def contact(request):
     return render(request, "web_site/contact.html", context)
 
 def projects(request):
-    return render(request, "web_site/projects.html")
+    projects = Project.objects.all()
+    context = {"projects" : projects}
+    return render(request, "web_site/projects.html", context)
 
 def photos(request):
     try:
