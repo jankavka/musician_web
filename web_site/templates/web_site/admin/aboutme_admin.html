@@ -1,0 +1,31 @@
+{% extends "admin/base.html" %}
+{{ block.super }}
+
+{% block content %}
+
+{% load static %}
+
+<script src="{% static '/web_site/script/tinymce/tinymce.min.js' %}"></script>
+
+<script>
+    tinymce.init({
+      selector: '#id_content',
+      license_key: 'gpl',
+      width: 900
+    });
+  </script>
+<div class="container">
+
+
+    <form method="POST" style="margin-bottom: 5px;">
+        {% csrf_token %}
+        <div>
+             {{content.as_p}}
+        </div>
+        <input type="submit" class="default" value="Odeslat"/>
+    </form>
+
+    <a href="/admin"><button class="button default" type="button" style="width: 60px;" >Domů</button></a>
+
+</div>
+{% endblock %}

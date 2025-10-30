@@ -1,0 +1,25 @@
+{% extends "web_site/base.html" %}
+
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+{% block article %}
+<article>
+    <h1>Fotky</h1>
+    <div class="picture-box d-grid gap-3">
+        {% for photo_item in photos_list %}
+        <a data-fslightbox href="{{photo_item.photo.url}}">
+
+            <img class="my-picture" src={{photo_item.photo.url}} alt="{{photo.title}}">
+        </a>
+
+
+        {% endfor %}
+    </div>
+</article>
+<script src="{% static 'web_site/script/fslightbox-basic-3.7.4/fslightbox.js' %}"></script>
+{% endblock %}
+
+</html>
