@@ -18,7 +18,7 @@ class Event(models.Model):
     class Meta:
         verbose_name = "Koncert"
         verbose_name_plural = "Koncerty"
-        locale.setlocale(locale.LC_ALL, "cs_CZ")
+        #locale.setlocale(locale.LC_ALL, "cs_CZ")
 
     def __str__(self):
         event_local_time = self.start_of_event.astimezone(
